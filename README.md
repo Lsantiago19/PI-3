@@ -1,5 +1,8 @@
-# PI-
-#Lucas Santiago
-#Lucas de Jesus
-#Jardel Junior
-#Felipe Canejo
+# PI-3
+Lucas Santiago, 
+
+Lucas De Jesus,
+
+Jardel Junior,
+
+Felipe Canejo.
