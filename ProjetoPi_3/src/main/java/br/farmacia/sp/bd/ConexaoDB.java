@@ -30,9 +30,9 @@ public class ConexaoDB {
     
     public static Connection getConexao() 
             throws ClassNotFoundException, SQLException {
-        String url = "jdbc:derby://localhost:1527/senac";
-        String user = "senac";
-        String password = "senac";
+        String url = "jdbc:derby://localhost:1527/FarmaciaClientes";
+        String user = "";
+        String password = "";
         return DriverManager.getConnection(url, user, password);
     }
     
