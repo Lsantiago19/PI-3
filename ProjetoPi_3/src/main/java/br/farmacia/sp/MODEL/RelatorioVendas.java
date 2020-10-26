@@ -5,10 +5,62 @@
  */
 package br.farmacia.sp.MODEL;
 
+import java.util.Date;
+
 /**
  *
  * @author kinha
  */
+
 public class RelatorioVendas {
+    private int idVenda;
+    private Date dataVenda;
+    private String nomeCli;
+    private double precoTotal;
     
+    public RelatorioVendas(Date dataVenda,String nomeCli,double precoTotal){
+    this.dataVenda = dataVenda;
+    this.nomeCli = nomeCli;
+    this.precoTotal = precoTotal;
+    
+    }
+
+    public int getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(int idVenda) {
+        this.idVenda = idVenda;
+    }
+
+    public Date getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
+    }
+
+    public String getNomeCli() {
+        return nomeCli;
+    }
+
+    public void setNomeCli(String nomeCli) {
+        this.nomeCli = nomeCli;
+    }
+
+    public double getPrecoTotal() {
+        return precoTotal;
+    }
+
+    public void setPrecoTotal(double precoTotal) {
+        this.precoTotal = precoTotal;
+    }
+    
+    
+        @Override
+    public String toString() {
+        return String.format("Data da Venda %s <br/> Nome %s <br/> PreçoTotal %d" , 
+                this.getDataVenda(), this.getNomeCli(), this.getPrecoTotal());
+    }
 }

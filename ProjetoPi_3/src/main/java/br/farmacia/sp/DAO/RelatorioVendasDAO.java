@@ -5,49 +5,42 @@
  */
 package br.farmacia.sp.DAO;
 
+import br.farmacia.sp.bd.ConexaoDB;
 import br.farmacia.sp.MODEL.RelatorioVendas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author kinha
  */
 public class RelatorioVendasDAO {
-    public static ArrayList<RelatorioVendas> consultarVendas(Date dataInicio, Date dataFim) {
-        ResultSet rs = null;
-        Connection conexao = null;
-        PreparedStatement instrucaoSQL = null;
-
-        ArrayList<RelatorioVendas> vendas = new ArrayList<>();
-
+     public static List<RelatorioVendas> getClientes() {
+        List<RelatorioVendas> listaClientes = new ArrayList();
         try {
-     //       conexao = GerenciadorConexao.abrirConexao();
-            instrucaoSQL = conexao.prepareStatement("SELECT ped.*, cli.nome FROM pedido ped left join cliente cli on ped.cliente = cli.id WHERE ped.inclusao BETWEEN ? AND ? order by ped.inclusao desc, ped.id desc");
-            instrucaoSQL.setDate(1, new java.sql.Date(dataInicio.getTime()));
-            instrucaoSQL.setDate(2, new java.sql.Date(dataFim.getTime()));
-            rs = instrucaoSQL.executeQuery();
-
+            Connection con = ConexaoDB.getConexao();
+            String query = "select * from cliente";
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-
-                RelatorioVendas venda = new RelatorioVendas();
-
-          //      venda.setIdVenda(rs.getInt("id"));
-            //    venda.setDataVenda(rs.getDate("inclusao"));
-              //  venda.setNomeCli(rs.getString("nome"));
-              //  venda.setPrecoTotal(rs.getDouble("total"));
-
-                vendas.add(venda);
+                String nome = rs.getString("nome");
+                String email = rs.getString("email");
+                long cpf = rs.getLong("cpf");
             }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            vendas = null;
-        } finally {
-         //   GerenciadorConexao.fecharConexao(conexao, instrucaoSQL);
+        } catch (ClassNotFoundException ex) {
+            /*Logger.getLogger(ServletBD.class.getName()).
+                    log(Level.SEVERE, null, ex);*/
+        } catch (SQLException ex) {
+           /* Logger.getLogger(ServletBD.class.getName()).
+                    log(Level.SEVERE, null, ex);*/
         }
-        return vendas;
+        return listaClientes;
     }
 }
