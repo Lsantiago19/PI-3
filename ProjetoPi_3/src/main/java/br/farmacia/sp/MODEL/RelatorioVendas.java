@@ -18,7 +18,9 @@ public class RelatorioVendas {
     private String nomeCli;
     private double precoTotal;
     
-    public RelatorioVendas(Date dataVenda,String nomeCli,double precoTotal){
+    public RelatorioVendas(int idVenda, Date dataVenda, String nomeCli, double precoTotal){
+    
+    this.idVenda = idVenda;
     this.dataVenda = dataVenda;
     this.nomeCli = nomeCli;
     this.precoTotal = precoTotal;
@@ -60,7 +62,7 @@ public class RelatorioVendas {
     
         @Override
     public String toString() {
-        return String.format("Data da Venda %s <br/> Nome %s <br/> PreçoTotal %d" , 
-                this.getDataVenda(), this.getNomeCli(), this.getPrecoTotal());
+        return String.format("idVenda %s <br/> Data da Venda %s <br/> Nome %s <br/> PreçoTotal %d" , 
+               this.getIdVenda(), this.getDataVenda(), this.getNomeCli(), this.getPrecoTotal());
     }
 }
