@@ -4,9 +4,25 @@
         <servlet-name>teste</servlet-name>
         <servlet-class>br.farmacia.sp.crud.teste</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioVendas</servlet-name>
+        <servlet-class>br.farmacia.sp.SERVLET.RelatorioVendas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarRelatorio</servlet-name>
+        <servlet-class>br.farmacia.sp.SERVLET.ListarRelatorio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>teste</servlet-name>
         <url-pattern>/teste</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioVendas</servlet-name>
+        <url-pattern>/RelatorioVendas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarRelatorio</servlet-name>
+        <url-pattern>/ListarRelatorio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

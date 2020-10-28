@@ -7,6 +7,7 @@ package br.farmacia.sp.bd;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,12 +31,10 @@ public class ConexaoDB {
     
     public static Connection getConexao() 
             throws ClassNotFoundException, SQLException {
-        String url = "jdbc:derby://localhost:1527/FarmaciaClientes";
-        String user = "";
-        String password = "";
+        String url = "jdbc:derby://localhost:1527/Senac";
+        String user = "senac";
+        String password = "senac";
         return DriverManager.getConnection(url, user, password);
     }
-    
-    
     
 }
