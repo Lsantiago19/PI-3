@@ -11,19 +11,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author canejo
  */
 public class ProdutoDAO {
-     public static ArrayList<Produto> consultarProdutos(String nome) {
+     public static List<Produto> consultarProdutos(String nome) {
         ResultSet rs = null;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         boolean filtroNome = nome != null && !nome.isEmpty();
 
-        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+        List<Produto> listaProdutos = new ArrayList<Produto>();
 
         try {
             conexao = ConexaoDB.getConexao();
@@ -42,15 +43,15 @@ public class ProdutoDAO {
 
             //Percorrer o resultSet
             while (rs.next()) {
-                Produto p = new Produto();
-                p.setCodigo(rs.getInt("codigo"));
-                p.setDescricao(rs.getString("descricao"));
-                p.setUnidade(rs.getString("unidade"));
-                p.setPreco(rs.getDouble("preco"));
-                p.setCodigoCategoria(rs.getInt("codigocategoria"));
-                p.setEstoque(rs.getInt("estoque"));
-                //p.setNomeCategoria(rs.getString("nome_categoria"));
-
+                Produto p = new Produto(
+                    rs.getInt("codigo"),
+                    rs.getString("descricao"),
+                    rs.getDouble("preco"),
+                    rs.getInt("estoque"),
+                    rs.getInt("codigomarca"),
+                    rs.getInt("codigocategoria"),
+                    rs.getString("unidade")
+                );
                 listaProdutos.add(p);
             }
 
@@ -62,4 +63,20 @@ public class ProdutoDAO {
 
         return listaProdutos;
      }
+
+    public static void alterarProduto(Produto produto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void incluirProduto(Produto produto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static Produto retornarProduto(int tryParseInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void deletarProduto(int codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

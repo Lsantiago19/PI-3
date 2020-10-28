@@ -5,10 +5,15 @@
  */
 package br.farmacia.sp.MODEL;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author canejo
  */
+@Getter
+@Setter
 public class Produto {
     private int codigo;
     private String descricao;
@@ -17,63 +22,22 @@ public class Produto {
     private int codigoMarca;
     private int codigoCategoria;
     private String unidade;
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
+   
+    public Produto(
+        int codigo,
+        String descricao,
+        double preco,
+        long estoque,
+        int codigoMarca,
+        int codigoCategoria,
+        String unidade
+    ) {
         this.codigo = codigo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
         this.preco = preco;
-    }
-
-    public long getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(long estoque) {
         this.estoque = estoque;
-    }
-
-    public int getCodigoMarca() {
-        return codigoMarca;
-    }
-
-    public void setCodigoMarca(int codigoMarca) {
         this.codigoMarca = codigoMarca;
-    }
-
-    public int getCodigoCategoria() {
-        return codigoCategoria;
-    }
-
-    public void setCodigoCategoria(int codigoCategoria) {
         this.codigoCategoria = codigoCategoria;
-    }
-
-    public String getUnidade() {
-        return unidade;
-    }
-
-    public void setUnidade(String unidade) {
         this.unidade = unidade;
     }
-    
-    
-    
 }
