@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.farmacia.sp.SERVLET;
+package br.farmacia.sp.SERVLET.Produto;
 
 import br.farmacia.sp.DAO.ProdutoDAO;
 import br.farmacia.sp.DAO.RelatorioVendasDAO;
