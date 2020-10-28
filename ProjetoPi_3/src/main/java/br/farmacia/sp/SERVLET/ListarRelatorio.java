@@ -42,10 +42,10 @@ public class ListarRelatorio extends HttpServlet {
             out.println("<title>Servlet Listar Relatorio</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarRelatorioads</h1>");
+            out.println("<h1>Servlet ListarRelatorio</h1>");
             
-            List<RelatorioVendas> lista = RelatorioVendasDAO.getRelatorios();
-            for (RelatorioVendas Relatorio: lista) {
+            List<RelatorioVendas> listaRelatorio = RelatorioVendasDAO.getRelatorios();
+            for (RelatorioVendas Relatorio: listaRelatorio) {
                 out.println(Relatorio);
             }
             out.println("</body>");

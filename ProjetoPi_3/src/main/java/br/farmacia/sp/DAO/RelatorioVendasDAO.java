@@ -23,27 +23,32 @@ import java.util.logging.Logger;
  * @author kinha
  */
 public class RelatorioVendasDAO {
-    public static List<RelatorioVendas> getRelatorios() {
-        List<RelatorioVendas> listaRelatorios = new ArrayList();
-        try {
-            Connection con = ConexaoDB.getConexao();
-            String query = "select * from Relatorio";
-            PreparedStatement ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                int idVenda = rs.getInt("");
-                Date dataVenda = rs.getDate("nome");
-                String nomeCli = rs.getString("email");
-                Double precoTotal = rs.getDouble("cpf");
-                listaRelatorios.add(new RelatorioVendas(idVenda, dataVenda, nomeCli, precoTotal));
-            }
-        } catch (ClassNotFoundException ex) {
+   public static List<RelatorioVendas> getRelatorios(){
+    List<RelatorioVendas> listaRelatorios = new ArrayList();
+    
+       try {
+       Connection con = ConexaoDB.getConexao();
+       String query = "select * from relatorio";
+       PreparedStatement ps = con.prepareStatement(query);
+       ResultSet rs = ps.executeQuery();
+       
+           while (rs.next()) {
+               String nome = rs.getString("nome");
+               double precototal = rs.getDouble("precototal");
+               int idvenda = rs.getInt("idvenda");
+               Date datavenda = rs.getDate("datavenda");
+               listaRelatorios.add(new RelatorioVendas(idvenda, datavenda, nome, precototal));
+               
+           }
+       }  catch (ClassNotFoundException ex) {
             Logger.getLogger(ListarRelatorio.class.getName()).
                     log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ListarRelatorio.class.getName()).
                     log(Level.SEVERE, null, ex);
         }
-        return listaRelatorios;
-    }
+       return null;
+   
+   }
+    
 }
