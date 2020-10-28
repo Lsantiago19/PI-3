@@ -23,27 +23,27 @@ import java.util.logging.Logger;
  * @author kinha
  */
 public class RelatorioVendasDAO {
-    public static List<RelatorioVendas> getRelatorio() {
-        List<RelatorioVendas> listaClientes = new ArrayList();
+    public static List<RelatorioVendas> getRelatorios() {
+        List<RelatorioVendas> listaRelatorios = new ArrayList();
         try {
             Connection con = ConexaoDB.getConexao();
-            String query = "select * from cliente";
+            String query = "select * from Relatorio";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                int idVenda = rs.getInt("idVenda");
-                Date dataVenda = rs.getDate("dataVenda");
-                String nomeCli = rs.getString("nome");
-                Double precoTotal = rs.getDouble("precoTotal");
-                listaClientes.add(new RelatorioVendas(idVenda,dataVenda ,nomeCli,precoTotal));
+                int idVenda = rs.getInt("");
+                Date dataVenda = rs.getDate("nome");
+                String nomeCli = rs.getString("email");
+                Double precoTotal = rs.getDouble("cpf");
+                listaRelatorios.add(new RelatorioVendas(idVenda, dataVenda, nomeCli, precoTotal));
             }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ListarRelatorio.class.getName()).
+                    log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ListarRelatorio.class.getName()).
                     log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RelatorioVendasDAO.class.getName()).log(Level.SEVERE, null, ex);
-            
         }
-        return listaClientes;
+        return listaRelatorios;
     }
 }

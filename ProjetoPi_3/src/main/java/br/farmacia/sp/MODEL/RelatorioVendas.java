@@ -58,6 +58,7 @@ public class RelatorioVendas {
     public void setPrecoTotal(double precoTotal) {
         this.precoTotal = precoTotal;
     }
+
     
     
         @Override

@@ -39,15 +39,21 @@ public class ListarRelatorio extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarRelatorio</title>");            
+            out.println("<title>Servlet Listar Relatorio</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarRelatorio at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListarRelatorioads</h1>");
+            
+            List<RelatorioVendas> lista = RelatorioVendasDAO.getRelatorios();
+            for (RelatorioVendas Relatorio: lista) {
+                out.println(Relatorio);
+            }
             out.println("</body>");
             out.println("</html>");
+            
         }
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -60,13 +66,8 @@ public class ListarRelatorio extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<RelatorioVendas> listaRelatorio = RelatorioVendasDAO.getRelatorio();
-                request.setAttribute("listaRelatorio", listaRelatorio);
-        
-         RequestDispatcher requestDispatcher = getServletContext()
-                 .getRequestDispatcher("/listaRelatorio.jsp");
-         requestDispatcher.forward(request, response);
-        
+                processRequest(request, response);
+  
     }
 
     /**
@@ -82,7 +83,7 @@ public class ListarRelatorio extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *

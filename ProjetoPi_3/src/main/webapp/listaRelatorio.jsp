@@ -20,15 +20,17 @@
                 <th>Valor Total</th>
             </thead>
             <tbody> 
-                <c:forEach var="Relatorio" items="${listaRelatorio}">
+                
+                <c:forEach var="relatorio" items="${listaRelatorio}">
                     <tr>
-                        <td>${Relatorio.idVendas}</td>>    
-                        <td>${Relatorio.cliNome}</td>
-                        <td>${Relatorio.dataVenda}</td>
-                        <td>${Relatorio.valorTotal}</td>
+                        <td>${relatorio.dataEntrega}</td>
+                        <td>${relatorio.nomeCli}</td>
+                        <td>${relatorio.valorTotal}</td>
+                        <td><a href="AlterarCliente?cpf=${cliente.cpf}">Alterar</a></td>
+                        <td><button type="button" class="btn btn-primary" onclick="mostrarModalExclusao(${cliente.cpf}, '${cliente.nome}')">Excluir</button></td>
                     </tr>
                 </c:forEach>
-                
+                    
             </tbody>
             
         </table>
