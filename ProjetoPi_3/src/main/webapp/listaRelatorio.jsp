@@ -20,8 +20,24 @@
                         <h1>Relatorio de Vendas</h1>
                     </div>
                 </div>
-                <div class="row">
+
+             <div class="form-row">
+
+               <div class="form-group col-md-3">
+                        <label for="preco">Nome</label>
+                        <input type="text" class="form-control" id="preco" value="${produto.preco}" name="preco">
+               </div>
+
+                        <div class="form-group col-md-3">
+                          <label for="unidade">Filial</label>
+                          <input type="text" class="form-control" id="unidade" value="${produto.unidade}" name="unidade">
+                        </div>
+                      
+               </div>
+
+                <div class="row-1">
                     <div class="col">
+                   
                          <table class="table table-hover">
                             <thead>
                                 <th>Nome</th>
