@@ -31,7 +31,7 @@
         <a class="nav-link" href="/ProjetoPi_3/ProdutoListar">Produtos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Vendas</a>
+        <a class="nav-link" href="/ProjetoPi_3/Vendas.jsp">Vendas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Relatórios</a>
