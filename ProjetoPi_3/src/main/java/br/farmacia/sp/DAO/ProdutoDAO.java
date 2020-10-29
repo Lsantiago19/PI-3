@@ -72,13 +72,13 @@ public class ProdutoDAO {
         PreparedStatement instrucaoSQL = null;
         try {
             conexao = ConexaoDB.getConexao();
-            instrucaoSQL = conexao.prepareStatement("UPDATE produto SET nome = ?, unidade = ?, preco = ?, categoria = ?, estoque = ? WHERE id = ?");
+            instrucaoSQL = conexao.prepareStatement("UPDATE produto SET nome = ?, unidade = ?, preco = ?, codigocategoria = ?, estoque = ? WHERE id = ?");
             instrucaoSQL.setString(1, produto.getDescricao());
             instrucaoSQL.setString(2, produto.getUnidade());
             instrucaoSQL.setDouble(3, produto.getPreco());
-            instrucaoSQL.setInt(5, produto.getCodigoCategoria());
-            instrucaoSQL.setLong(6, produto.getEstoque());
-            instrucaoSQL.setInt(7, produto.getCodigo());
+            instrucaoSQL.setInt(4, produto.getCodigoCategoria());
+            instrucaoSQL.setLong(5, produto.getEstoque());
+            instrucaoSQL.setInt(6, produto.getCodigo());
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
@@ -101,7 +101,7 @@ public class ProdutoDAO {
         PreparedStatement instrucaoSQL = null;
         try {
             conexao = ConexaoDB.getConexao();
-            instrucaoSQL = conexao.prepareStatement("INSERT INTO produto (nome, unidade, preco, categoria, estoque) VALUES (?, ?, ?, ?, ?)",
+            instrucaoSQL = conexao.prepareStatement("INSERT INTO produto (nome, unidade, preco, codigocategoria, estoque) VALUES (?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             instrucaoSQL.setString(1, produto.getDescricao());
