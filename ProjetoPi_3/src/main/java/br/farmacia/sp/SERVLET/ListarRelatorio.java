@@ -42,12 +42,7 @@ public class ListarRelatorio extends HttpServlet {
             out.println("<title>Servlet Listar Relatorio</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarRelatorio</h1>");
-            
-            List<RelatorioVendas> listaRelatorio = RelatorioVendasDAO.getRelatorios();
-            for (RelatorioVendas Relatorio: listaRelatorio) {
-                out.println(Relatorio);
-            }
+            out.println("<h1>Servlet ListarRelatorio</h1>");           
             out.println("</body>");
             out.println("</html>");
             
@@ -66,7 +61,12 @@ public class ListarRelatorio extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                processRequest(request, response);
+        List<RelatorioVendas> relatorios = RelatorioVendasDAO.consultarRelatorio("");
+        request.setAttribute("Relatorios", relatorios);
+        
+         RequestDispatcher requestDispatcher = getServletContext()
+                 .getRequestDispatcher("/listaRelatorio.jsp");
+         requestDispatcher.forward(request, response);
   
     }
 
