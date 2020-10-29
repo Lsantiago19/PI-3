@@ -5,6 +5,7 @@
  */
 package br.farmacia.sp.DAO;
 
+import br.farmacia.sp.MODEL.Produto;
 import br.farmacia.sp.MODEL.RelatorioVendas;
 import br.farmacia.sp.SERVLET.ListarRelatorio;
 import br.farmacia.sp.bd.ConexaoDB;
@@ -23,32 +24,50 @@ import java.util.logging.Logger;
  * @author kinha
  */
 public class RelatorioVendasDAO {
-   public static List<RelatorioVendas> getRelatorios(){
-    List<RelatorioVendas> listaRelatorios = new ArrayList();
     
-       try {
-       Connection con = ConexaoDB.getConexao();
-       String query = "select * from relatorio";
-       PreparedStatement ps = con.prepareStatement(query);
-       ResultSet rs = ps.executeQuery();
-       
-           while (rs.next()) {
-               String nome = rs.getString("nome");
-               double precototal = rs.getDouble("precototal");
-               int idvenda = rs.getInt("idvenda");
-               Date datavenda = rs.getDate("datavenda");
-               listaRelatorios.add(new RelatorioVendas(idvenda, datavenda, nome, precototal));
-               
-           }
-       }  catch (ClassNotFoundException ex) {
-            Logger.getLogger(ListarRelatorio.class.getName()).
-                    log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListarRelatorio.class.getName()).
-                    log(Level.SEVERE, null, ex);
+     public static List<RelatorioVendas> consultarRelatorio(String nome) {
+        ResultSet rs = null;
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+        boolean filtroNome = nome != null && !nome.isEmpty();
+
+        List<RelatorioVendas> listaRelatorio = new ArrayList<RelatorioVendas>();
+
+        try {
+            conexao = ConexaoDB.getConexao();
+            String query = "SELECT * FROM RELATORIO";
+
+            if (filtroNome) {
+                query += " AND pro.nome like ?";
+            }
+
+            instrucaoSQL = conexao.prepareStatement(query);
+            if (filtroNome) {
+                instrucaoSQL.setString(1, nome + "%");
+            }
+
+            rs = instrucaoSQL.executeQuery();
+
+            //Percorrer o resultSet
+            while (rs.next()) {
+                RelatorioVendas p = new RelatorioVendas(
+                    rs.getInt("idVenda"),
+                    rs.getDate("dataVenda"),
+                    rs.getString("nome"),
+                    rs.getDouble("precoTotal"),
+                    rs.getString("Filial")
+                                               
+                );
+                listaRelatorio.add(p);
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            listaRelatorio = null;
+        } finally {
         }
-       return null;
-   
-   }
-    
+
+        return listaRelatorio;
+     }
+  
 }

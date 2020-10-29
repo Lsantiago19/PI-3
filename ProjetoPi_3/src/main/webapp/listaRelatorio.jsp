@@ -11,28 +11,39 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Relatorio de Vendas</title>
     </head>
-    <body>
-        <h1>Relatorio de Vendas</h1>
-        
-         <thead>
-                <th>Nome</th>
-                <th>Data da Venda</th>
-                <th>Valor Total</th>
-            </thead>
-            <tbody> 
-                
-                <c:forEach var="relatorio" items="${listaRelatorio}">
-                    <tr>
-                        <td>${relatorio.dataEntrega}</td>
-                        <td>${relatorio.nomeCli}</td>
-                        <td>${relatorio.valorTotal}</td>
-                        <td><a href="AlterarCliente?cpf=${cliente.cpf}">Alterar</a></td>
-                        <td><button type="button" class="btn btn-primary" onclick="mostrarModalExclusao(${cliente.cpf}, '${cliente.nome}')">Excluir</button></td>
-                    </tr>
-                </c:forEach>
-                    
-            </tbody>
-            
-        </table>
+   <body>
+        <%@include file="Header.jsp" %>
+        <main role="main">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Relatorio de Vendas</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                         <table class="table table-hover">
+                            <thead>
+                                <th>Nome</th>
+                                <th>Data da Venda</th>
+                                <th>Valor</th>
+                                <th>Filial</th>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="Relatorio" items="${Relatorio}">
+                                    <tr>
+                                        <td>${Relatorio.getnome()}</td>
+                                        <td>${Relatorio.getdataVenda()}</td>
+                                        <td>${Relatorio.getprecoTotal()}</td>
+                                        <td>${Relatorio.getfilial()}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
     </body>
+
 </html>
