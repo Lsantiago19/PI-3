@@ -5,7 +5,6 @@
  */
 package br.farmacia.sp.DAO;
 
-import br.farmacia.sp.MODEL.Produto;
 import br.farmacia.sp.MODEL.RelatorioVendas;
 import br.farmacia.sp.SERVLET.ListarRelatorio;
 import br.farmacia.sp.bd.ConexaoDB;
@@ -35,7 +34,7 @@ public class RelatorioVendasDAO {
 
         try {
             conexao = ConexaoDB.getConexao();
-            String query = "SELECT * FROM RELATORIO";
+            String query = "SELECT * FROM relatorio";
 
             if (filtroNome) {
                 query += " AND pro.nome like ?";
@@ -55,7 +54,7 @@ public class RelatorioVendasDAO {
                     rs.getDate("dataVenda"),
                     rs.getString("nome"),
                     rs.getDouble("precoTotal"),
-                    rs.getString("Filial")
+                    rs.getString("filial")
                                                
                 );
                 listaRelatorio.add(p);

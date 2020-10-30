@@ -34,8 +34,8 @@
                         </div>
                       
                </div>
-
-                <div class="row-1">
+                        
+                <div class="row">
                     <div class="col">
                    
                          <table class="table table-hover">

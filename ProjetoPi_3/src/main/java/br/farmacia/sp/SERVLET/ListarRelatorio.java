@@ -61,6 +61,7 @@ public class ListarRelatorio extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         List<RelatorioVendas> relatorios = RelatorioVendasDAO.consultarRelatorio("");
         request.setAttribute("Relatorios", relatorios);
         
