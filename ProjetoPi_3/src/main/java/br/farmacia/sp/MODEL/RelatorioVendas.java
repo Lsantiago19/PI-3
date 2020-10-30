@@ -6,12 +6,15 @@
 package br.farmacia.sp.MODEL;
 
 import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
  * @author kinha
  */
-
+@Getter
+@Setter
 public class RelatorioVendas {
     private int idVenda;
     private Date dataVenda;
@@ -25,39 +28,9 @@ public class RelatorioVendas {
     this.dataVenda = dataVenda;
     this.nomeCli = nomeCli;
     this.precoTotal = precoTotal;
+    this.filial = filial;
     
-    }
-
-    public int getIdVenda() {
-        return idVenda;
-    }
-
-    public void setIdVenda(int idVenda) {
-        this.idVenda = idVenda;
-    }
-
-    public Date getDataVenda() {
-        return dataVenda;
-    }
-
-    public void setDataVenda(Date dataVenda) {
-        this.dataVenda = dataVenda;
-    }
-
-    public String getNomeCli() {
-        return nomeCli;
-    }
-
-    public void setNomeCli(String nomeCli) {
-        this.nomeCli = nomeCli;
-    }
-
-    public double getPrecoTotal() {
-        return precoTotal;
-    }
-
-    public void setPrecoTotal(double precoTotal) {
-        this.precoTotal = precoTotal;
+    
     }
   
  
