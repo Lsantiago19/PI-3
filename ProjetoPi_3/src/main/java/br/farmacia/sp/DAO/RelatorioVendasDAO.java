@@ -34,10 +34,10 @@ public class RelatorioVendasDAO {
 
         try {
             conexao = ConexaoDB.getConexao();
-            String query = "SELECT * FROM relatorio";
+            String query = "SELECT * FROM relatorio WHERE idVenda = ?";
 
             if (filtroNome) {
-                query += " AND pro.nome like ?";
+                query += " AND relatorio.nome like ?";
             }
 
             instrucaoSQL = conexao.prepareStatement(query);
@@ -68,5 +68,6 @@ public class RelatorioVendasDAO {
 
         return listaRelatorio;
      }
+       
   
 }
