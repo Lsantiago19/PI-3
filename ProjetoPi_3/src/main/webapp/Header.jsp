@@ -37,7 +37,7 @@
         <a class="nav-link" href="/ProjetoPi_3/listaRelatorio.jsp">Relatórios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Clientes</a>
+        <a class="nav-link" href="/ProjetoPi_3/listaClientes.jsp">Clientes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Usuários</a>
