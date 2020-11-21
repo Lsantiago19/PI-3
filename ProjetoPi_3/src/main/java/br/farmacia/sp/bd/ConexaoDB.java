@@ -21,7 +21,7 @@ public class ConexaoDB {
     // Bloco executado uma única vez quando o servidor é inicializado
     static {
         try {
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConexaoDB.class.getName())
                     .log(Level.SEVERE, null, ex);
@@ -31,9 +31,9 @@ public class ConexaoDB {
     
     public static Connection getConexao() 
             throws ClassNotFoundException, SQLException {
-        String url = "jdbc:derby://localhost:1527/Senac";
-        String user = "senac";
-        String password = "senac";
+        String url = "jdbc:mysql://localhost:3306/vendas?zeroDateTimeBehavior=convertToNull";
+        String user = "root";
+        String password = "";
         return DriverManager.getConnection(url, user, password);
     }
     

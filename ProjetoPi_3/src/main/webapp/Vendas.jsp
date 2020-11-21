@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary col-1">OK</button>
+                 <button type="submit" class="btn btn-primary">Ok</button>
                 <a href="ProdutoListar" class="btn btn-danger col-1">Cancel</a>
 
             </div>

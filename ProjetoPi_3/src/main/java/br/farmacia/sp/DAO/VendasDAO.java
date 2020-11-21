@@ -10,6 +10,7 @@ import br.farmacia.sp.bd.ConexaoDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,8 @@ public class VendasDAO {
                     rs.getString("unidade"),
                     rs.getString("cpf"),
                     rs.getString("nomeVendedor"),
-                    rs.getDouble("desconto")
+                    rs.getDouble("desconto"),
+                    rs.getDouble("totalVenda")
                 );
                 listaVendas.add(p);
             }
@@ -55,4 +57,19 @@ public class VendasDAO {
 
         return listaVendas;
      }
+    
+    public static void addVenda(Vendas vendas) throws SQLException, ClassNotFoundException {
+        Connection con = ConexaoDB.getConexao();
+        String query = "insert into vendas(produto, quantidade, unidade, categoria, nomeVendedor, cpfCliente, desconto, total) values (?,?,?,?,?,?,?,?)";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(2, vendas.getProduto());
+        ps.setInt(3, vendas.getQuantidade());
+        ps.setString(4, vendas.getUnidade());
+        ps.setString(5, vendas.getCategoria());
+        ps.setString(6, vendas.getNomeVendedor());
+        ps.setString(7, vendas.getCpf());
+        ps.setDouble(8, vendas.getDesconto());
+        ps.setDouble(9, vendas.getTotalVenda());
+        ps.execute();
+    }
 }
