@@ -63,6 +63,6 @@ public class Utils {
     }
     
     public static void mostrarTelaSucesso(HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("sucesso.jsp");
+        response.sendRedirect("Sucesso.jsp");
     }
 }

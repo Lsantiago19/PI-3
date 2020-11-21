@@ -7,13 +7,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%@include file="header.jsp" %>
+    <%@include file="Header.jsp" %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sucesso</title>
     </head>
     <body>
         <h1>Operação executada com sucesso!</h1><br/>
-        <a href="index.jsp">Voltar</a>
+        <a href="Vendas.jsp">Voltar</a>
     </body>
 </html>
+
